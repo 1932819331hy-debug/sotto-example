@@ -34,6 +34,7 @@ sotto --version
 
 ```powershell
 irm https://raw.githubusercontent.com/getsotto/sotto/main/install.ps1 | iex
+$env:PATH = "$env:LOCALAPPDATA\sotto\bin;$env:PATH"
 git clone https://github.com/getsotto/sotto-example.git
 cd sotto-example
 sotto --version
@@ -175,9 +176,10 @@ GNOME Keyring); see [troubleshooting](#troubleshooting) for headless machines.
 
 ## Troubleshooting
 
-- **`sotto` not found:** reopen your terminal after installation. On macOS/Linux,
-  add `~/.local/bin` to `PATH` as shown above. On Windows, the default binary
-  directory is `%LOCALAPPDATA%\sotto\bin`.
+- **`sotto` not found:** add the install directory to your current shell's `PATH`
+  using the command shown above. To keep it available in future terminals, add
+  `~/.local/bin` to your shell configuration on macOS/Linux, or
+  `%LOCALAPPDATA%\sotto\bin` to your user Path in Windows Environment Variables.
 - **Python command not found:** verify `python3 --version` on macOS/Linux or
   `py -3 --version` on Windows. If your installation uses `python`, substitute
   it in both the direct and `sotto run` commands.
