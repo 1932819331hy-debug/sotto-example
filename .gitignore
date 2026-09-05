@@ -1,0 +1,14 @@
+# Every visitor creates their own local project.
+sotto.toml
+.env
+.env.*
+
+# Language build output and local tools.
+**/build/
+**/bin/
+**/obj/
+**/__pycache__/
+*.class
+node_modules/
+.venv/
+.DS_Store
