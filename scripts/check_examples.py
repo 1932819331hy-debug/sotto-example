@@ -17,13 +17,14 @@ COMMANDS = {
     "csharp": ["dotnet", "run", "--no-build", "--no-restore", "--project", "csharp/Demo.csproj"],
     "php": ["php", "php/main.php"],
     "go": ["go", "run", "go/main.go"],
+    "rust": [str(ROOT / "rust/target/debug" / ("demo.exe" if os.name == "nt" else "demo"))],
     "cpp": [str(ROOT / "cpp/build" / ("demo.exe" if os.name == "nt" else "demo"))],
 }
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("languages", nargs="*", help="Default: all eight languages")
+    parser.add_argument("languages", nargs="*", help="Default: all nine languages")
     args = parser.parse_args()
     languages = args.languages or list(COMMANDS)
     for language in languages:
@@ -32,6 +33,8 @@ def main():
 
     if "csharp" in languages:
         subprocess.run(["dotnet", "build", "csharp/Demo.csproj", "--nologo"], cwd=ROOT, check=True)
+    if "rust" in languages:
+        subprocess.run(["cargo", "build", "--quiet", "--manifest-path", "rust/Cargo.toml"], cwd=ROOT, check=True)
     if "cpp" in languages:
         subprocess.run(["cmake", "-S", "cpp", "-B", "cpp/build"], cwd=ROOT, check=True)
         subprocess.run(["cmake", "--build", "cpp/build", "--config", "Release"], cwd=ROOT, check=True)

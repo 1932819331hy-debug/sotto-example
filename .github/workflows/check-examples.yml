@@ -41,7 +41,7 @@ jobs:
           php-version: '8.4'
           coverage: none
           tools: none
-      - name: Check all eight languages
+      - name: Check all nine languages
         run: python scripts/check_examples.py
 
   local-sotto:
