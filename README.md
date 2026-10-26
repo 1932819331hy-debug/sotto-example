@@ -1,6 +1,6 @@
 # Sotto examples
 
-**One secret. Eight languages. No account required.**
+**One secret. Nine languages. No account required.**
 
 Try [Sotto](https://github.com/getsotto/sotto) locally with a tiny terminal program.
 Store `DEMO_SECRET` in an encrypted local vault, then let `sotto run` supply it to
@@ -11,7 +11,7 @@ your program. No SDK, application dependencies, server, or `.env` file needed.
 *Animated walkthrough; first-run prompts are summarised. Copyable steps are below.*
 
 [Python](python/) · [JavaScript](javascript/) · [TypeScript](typescript/) ·
-[Java](java/) · [C#](csharp/) · [PHP](php/) · [Go](go/) · [C++](cpp/)
+[Java](java/) · [C#](csharp/) · [PHP](php/) · [Go](go/) · [Rust](rust/) · [C++](cpp/)
 
 ## Quick start with Python
 
@@ -83,7 +83,7 @@ just a made-up demo value. Your typing will not appear in the terminal. In a
 POSIX shell script or pipeline, you can also pass a synthetic value on standard
 input with `printf '%s' 'hello-from-sotto' | sotto set DEMO_SECRET --stdin`.
 
-Initialise once at the repository root. All eight examples share this project.
+Initialise once at the repository root. All nine examples share this project.
 Your generated `sotto.toml` is ignored by Git so each visitor creates their own project.
 
 ### 4. Run with Sotto
@@ -120,17 +120,18 @@ repository root on macOS, Linux, or Windows PowerShell unless noted.
 | Language | Prerequisite | Run |
 | --- | --- | --- |
 | [Python](python/) | Python 3 | `sotto run -- python3 python/main.py` (Windows: `sotto run -- py -3 python/main.py`) |
-| [JavaScript](javascript/) | Node.js 24 LTS | `sotto run -- node javascript/main.js` |
-| [TypeScript](typescript/) | Node.js 24.12+ | `sotto run -- node typescript/main.ts` |
+| [JavaScript](javascript/) | Node.js 18+ | `sotto run -- node javascript/main.js` |
+| [TypeScript](typescript/) | Node.js 22.18+ | `sotto run -- node typescript/main.ts` |
 | [Java](java/) | JDK 17+ | `sotto run -- java java/Main.java` |
-| [C#](csharp/) | .NET 10 SDK | `sotto run -- dotnet run --project csharp/Demo.csproj` |
+| [C#](csharp/) | .NET 8+ SDK | `sotto run -- dotnet run --project csharp/Demo.csproj` |
 | [PHP](php/) | PHP 8 CLI | `sotto run -- php php/main.php` |
 | [Go](go/) | Go 1.22+ | `sotto run -- go run go/main.go` |
+| [Rust](rust/) | Rust and Cargo | `sotto run -- cargo run --quiet --manifest-path rust/Cargo.toml` |
 | [C++](cpp/) | CMake 3.20+ and a C++17 compiler | Build first; see below. |
 
 Node runs this small TypeScript example using its
 [built-in type stripping](https://nodejs.org/api/typescript.html), so it needs no
-package install. Java's source-file launcher and `go run` handle compilation for
+package install. Java's source-file launcher, `go run`, and `cargo run` handle compilation for
 their examples. C# uses the .NET SDK to build its dependency-free project.
 
 For C++, install CMake and a compiler (Clang/GCC on macOS or Linux; Visual Studio
@@ -155,6 +156,47 @@ sotto run -- .\cpp\build\demo.exe
 
 Every example produces the same success message and returns `0`. A missing or
 empty secret produces the same helpful error on stderr and returns `1`.
+
+## Explore more local features
+
+Everything below also works locally without an account or server.
+
+### Promote secrets across environments
+
+`sotto init` creates `dev`, `staging`, and `prod` environments and selects `dev`.
+Compare `dev` with `staging`, copy `DEMO_SECRET` into `staging`, and run the
+demo against `staging` without changing your default environment:
+
+```sh
+sotto env ls
+sotto env diff dev staging
+sotto env copy dev staging --confirm
+sotto run --env staging -- python3 python/main.py
+```
+
+### Import an existing dotenv file
+
+If you already have a `.env` file, `sotto import` encrypts each assignment into
+your local store without modifying or deleting the file:
+
+```sh
+sotto import .env
+sotto import --env staging .env.staging
+sotto ls --json
+```
+
+### Inspect status, lock, and change themes
+
+Check whether your local identity is set up and unlocked, clear the cached
+session key when you finish, or switch between built-in terminal themes:
+
+```sh
+sotto status
+sotto status --json
+sotto theme ls
+sotto lock
+sotto unlock
+```
 
 ## How it works
 
