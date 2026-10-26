@@ -220,6 +220,9 @@ GNOME Keyring); see [troubleshooting](#troubleshooting) for headless machines.
 
 ## Troubleshooting
 
+- **Check local state first:** run `sotto status` (or `sotto status --json`) from
+  the repository root to see whether a local identity is initialised, whether your
+  session is unlocked, and which project and environment are selected.
 - **`sotto` not found:** add the install directory to your current shell's `PATH`
   using the command shown above. To keep it available in future terminals, add
   `~/.local/bin` to your shell configuration on macOS/Linux, or
@@ -244,6 +247,8 @@ GNOME Keyring); see [troubleshooting](#troubleshooting) for headless machines.
 
 - [Sotto](https://github.com/getsotto/sotto): encrypted sync, teams, and the full CLI.
 - [Sotto Action](https://github.com/getsotto/sotto-action): GitHub Actions setup and CI examples.
+- [Sotto VS Code extension](https://github.com/getsotto/sotto-vscode): local VS Code task integration preview.
+- [Sotto Homebrew tap](https://github.com/getsotto/homebrew-tap): macOS Homebrew formula preview.
 - [Maintaining the examples and animation](CONTRIBUTING.md).
 
 ## License

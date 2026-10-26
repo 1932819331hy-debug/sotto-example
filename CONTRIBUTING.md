@@ -1,6 +1,6 @@
 # Maintaining the examples
 
-Keep each example a small standard-library terminal program. All eight must:
+Keep each example a small standard-library terminal program. All nine must:
 
 - Read `DEMO_SECRET` from the process environment without a Sotto SDK.
 - Reject an absent or empty value with exit code `1` and the documented stderr message.
@@ -18,12 +18,13 @@ python3 scripts/check_examples.py
 On Windows use `py -3` in place of `python3`. To check only installed languages:
 
 ```sh
-python3 scripts/check_examples.py python javascript typescript java go
+python3 scripts/check_examples.py python javascript typescript java go rust
 ```
 
-The repository's maintenance workflow checks all eight languages on macOS,
+The repository's maintenance workflow checks all nine languages on macOS,
 Linux, and Windows with synthetic environment values. A separate Linux job
-checks the real `sotto init` / `set` / `run` flow with a disposable OS keyring.
+checks the real `sotto` local flow (`status`, `init`, `env`, `set`, `ls`, `run`,
+`import`, and `lock`/`unlock`) with a disposable OS keyring.
 It uses no hosted account or repository secrets. This is validation for these
 examples; user-facing CI integration belongs in
 [sotto-action](https://github.com/getsotto/sotto-action).

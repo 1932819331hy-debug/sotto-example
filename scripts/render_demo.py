@@ -30,7 +30,7 @@ SCENES = [
         ("Set it with `sotto set DEMO_SECRET`, then run this demo", MUTED),
         ("with `sotto run -- <command>`.", MUTED),
     ]),
-    ("02 / Initialise locally", "No account. No server. One setup for all eight languages.", [
+    ("02 / Initialise locally", "No account. No server. One setup for all nine languages.", [
         ("$ sotto init", TEXT),
         ("[First run: choose and confirm a master password]", MUTED),
         ("[Save your Emergency Kit privately]", MUTED),
@@ -45,7 +45,7 @@ SCENES = [
         ("$ sotto run -- python3 python/main.py", TEXT),
         ("Sotto demo: secret loaded successfully.", ACCENT),
         ("", TEXT),
-        ("Same setup. Python + seven more languages.", MUTED),
+        ("Same setup. Python + eight more languages.", MUTED),
     ]),
 ]
 
