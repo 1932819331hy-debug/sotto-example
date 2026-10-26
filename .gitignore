@@ -7,6 +7,8 @@ sotto.toml
 **/build/
 **/bin/
 **/obj/
+**/target/
+**/Cargo.lock
 **/__pycache__/
 *.class
 node_modules/

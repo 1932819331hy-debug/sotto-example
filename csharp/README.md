@@ -1,6 +1,6 @@
 # C# demo
 
-Requires **.NET 10 SDK**. Follow the [root quick start](../README.md#quick-start-with-python)
+Requires **.NET 8 SDK or newer**. Follow the [root quick start](../README.md#quick-start-with-python)
 to install Sotto, run `sotto init` once, and set `DEMO_SECRET`.
 
 Run from the **repository root**:

@@ -1,6 +1,6 @@
 # JavaScript demo
 
-Requires **Node.js 24 LTS**. Follow the [root quick start](../README.md#quick-start-with-python)
+Requires **Node.js 18 or newer** (24 LTS in CI). Follow the [root quick start](../README.md#quick-start-with-python)
 to install Sotto, run `sotto init` once, and set `DEMO_SECRET`.
 
 Run from the **repository root**:
