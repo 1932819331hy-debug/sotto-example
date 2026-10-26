@@ -40,7 +40,7 @@ cd sotto-example
 sotto --version
 ```
 
-Already have Sotto? Skip the installer. You can also click **Use this template**
+Already have Sotto? Skip the installer. On macOS 15 or newer, you can also install via the [Homebrew tap preview](https://github.com/getsotto/homebrew-tap#readme) with `brew install getsotto/tap/sotto`. You can also click **Use this template**
 on GitHub and clone your own copy. For manual downloads and verification, see
 [Sotto's installation instructions](https://github.com/getsotto/sotto#install).
 
@@ -79,7 +79,9 @@ already use Sotto, it reuses your local identity and creates a new project for
 this directory; you may be asked to unlock it.
 
 At the hidden `Value:` prompt, enter `hello-from-sotto` and press Enter. This is
-just a made-up demo value. Your typing will not appear in the terminal.
+just a made-up demo value. Your typing will not appear in the terminal. In a
+POSIX shell script or pipeline, you can also pass a synthetic value on standard
+input with `printf '%s' 'hello-from-sotto' | sotto set DEMO_SECRET --stdin`.
 
 Initialise once at the repository root. All eight examples share this project.
 Your generated `sotto.toml` is ignored by Git so each visitor creates their own project.
